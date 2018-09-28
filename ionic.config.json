@@ -1,0 +1,7 @@
+{
+  "name": "ou_es_la_fete",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
