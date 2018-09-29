@@ -28,6 +28,10 @@ export class AboutPage {
   ionViewDidLoad() {
     this.loadMap();
   }
+
+  getPosition(){
+    console.log(this.geolocation.getCurrentPosition());
+  }
   
   loadMap() {
     this.geolocation.getCurrentPosition().then((position) => {

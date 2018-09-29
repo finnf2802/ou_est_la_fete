@@ -32,12 +32,16 @@ export class HomePage {
     const items = this.db.list("/items");
 
     if(this.author == "a1")
-      this.author1 = "author1";
+      this.author1 = "Hugo";
     else if(this.author == "a2")
-      this.author1 = "author2";
+      this.author1 = "Martin";
+    else if(this.author == "a3")
+      this.author1 = "Admin";
 
-    if(this.author1 != null)
-      items.push({author: this.author1, content: this.msgContent})
+    if(this.author1 != null){
+      items.push({author: this.author1, content: this.msgContent});
+      this.msgContent = null;
+    }
   }
 
   //upload data to Google Firebase on click (btn) via "uploadFirebase()"
