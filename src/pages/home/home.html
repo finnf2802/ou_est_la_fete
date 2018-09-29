@@ -1,17 +1,25 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Welcome to the Chatroom!</ion-title>
+    <ion-title>Où est la fête?</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding class="page-home">
-  <ul>
       <div *ngFor="let course of obsable | async">
-        <p>
-          {{course | json}}
-        </p> 
+        
+            <ion-card [ngClass]="(course.author == author1) ? 'card-right' : 'card-left'"> 
+                <ion-card-header>
+                {{course.author}}
+              
+                
+                </ion-card-header>
+                <ion-card-content>
+              {{course.content}}
+                </ion-card-content>
+              </ion-card>
+         
+        
       </div>
-    </ul>
     
 </ion-content>
 
