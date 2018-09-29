@@ -18,7 +18,14 @@ downloadFirebase(){
     this.messages.subscribe(console.log);
     
   }
-
+uploadEvent(lat:number,lng:number)
+{
+  const items = this.db.list("/items");
+  if(this.currentauthor != null){
+    items.push({author: this.currentauthor, content:"Event",timestamp: Date.now(),latitude:lat,longitude:lng});
+    
+  }
+}
 uploadFirebase(author:String,msgContent:String){
     const items = this.db.list("/items");
 
@@ -31,7 +38,7 @@ uploadFirebase(author:String,msgContent:String){
 
     if(this.currentauthor != null){
       items.push({author: this.currentauthor, content:msgContent,timestamp: Date.now()});
-      msgContent = null;
+      
     }
   }
 }

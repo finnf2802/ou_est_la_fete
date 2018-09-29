@@ -30,7 +30,7 @@ export class AboutPage {
     this.loadMap();
   }
   uploadFirebase(lat: number, lng: number) {
-    this.data.uploadFirebase(null, "Event:http://maps.google.de/maps?q=" + lat.toString() +"," +lng.toString()  )
+    this.data.uploadEvent(lat,lng  );
   }
   getPosition() {
     const position = this.geolocation.getCurrentPosition();
