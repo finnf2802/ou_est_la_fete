@@ -7,14 +7,11 @@
     <ion-title>
       Map 
     </ion-title>
-    <ion-buttons end>
-      <button ion-button (click)="addMarker()"></button>
-    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <button ion-button (click)="getPosition()" full round icon-end color="secondary">send position<ion-icon name="pin"></ion-icon></button>
+    <button ion-button (click)="getPosition()" full round icon-end color="secondary">send position<ion-icon name="pin"></ion-icon></button>
   <div #map id="map">
     <button ion-button (click)="onButtonClick($event)">Map</button>
   </div>

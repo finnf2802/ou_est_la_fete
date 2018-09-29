@@ -56,13 +56,14 @@ export class AboutPage {
     });
   }
 
-  addMarker() { // To Add Marker
+  addMarker(lat: number, lng: number) { // To Add Marker
+    let latLng = {lat, lng} ;
     let marker = new google.maps.Marker({
       map: this.map,
       animation: google.maps.Animation.DROP,
-      position: this.map.getCenter()
+      position: latLng
     });
-    let content = "<h3>My New Location!</h3><h5>by Anish youtube - Please subscribe</h5>";
+    let content = "<h3>My New Location!</h3>";
     this.addInfoWindow(marker, content);
   }
 

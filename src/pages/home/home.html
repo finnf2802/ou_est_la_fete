@@ -5,17 +5,23 @@
 </ion-header>
 
 <ion-content padding class="page-home">
-      <div *ngFor="let course of data.messages | async">
+      <div *ngFor="let message of data.messages | async">
         
-            <ion-card [ngClass]="(course.author == data.currentauthor) ? 'card-right' : 'card-left'"> 
+            <ion-card [ngClass]="(message.author == data.currentauthor) ? 'card-right' : 'card-left'"> 
                 <ion-card-header>
-               <b>{{course.author}}</b>
+               <b>{{message.author}}</b>
               
                 
                 </ion-card-header>
                 <ion-card-content>
-              <p>{{course.content}}</p>
-             <p>{{course.timestamp|date: 'H:mm'}}</p> 
+              <p>{{message.content}}</p>
+             <p>{{message.timestamp|date: 'H:mm'}} </p>
+             <p></p>
+                <div *ngIf="message.latitude && message.longitude;">
+                    <button ion-button full (click)="showMarkerMap(message.latitude, message.longitude, message.author)">
+                      Open Map
+                    </button>
+                   </div>
               
 
                 </ion-card-content>

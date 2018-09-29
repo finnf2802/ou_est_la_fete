@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Tabs } from 'ionic-angular';
+
 
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Data } from '../../services/data';
+import { ContactPage } from '../contact/contact';
+
 
 @Component({ 
   selector: 'page-home',
@@ -13,6 +16,7 @@ export class HomePage {
  
   public author;
   public msgContent;
+
   constructor(
     public navCtrl: NavController,
     public db: AngularFireDatabase,
@@ -21,11 +25,30 @@ export class HomePage {
       
   }
 
+  showMarkerMap(lat: number, lng: number, author: string){
+    this.swapToMapPage(lat,lng, author);
+  }
+
+  swapToMapPage(lat: number, lng: number, author: string){
+    this.navCtrl.push(ContactPage, {
+      latitude: lat,
+      longitude: lng,
+      author: author
+    })
+    //var t: Tabs = this.navCtrl.parent;
+    //t.select(1);
+  }
+
+  setMarker(lat: number, lng: number){
+    //this.about.addMarker(lat, lng);
+  }
+
+
   //upload data to Google Firebase on click (btn) via "uploadFirebase()"
   send(){
     if(this.author != null && this.msgContent != null){
       this.data.uploadFirebase(this.author,this.msgContent);
-      this.msgContent = "";
+      this.msgContent = null;
     }
       
       
