@@ -5,9 +5,9 @@
 </ion-header>
 
 <ion-content padding class="page-home">
-      <div *ngFor="let course of obsable | async">
+      <div *ngFor="let course of data.messages | async">
         
-            <ion-card [ngClass]="(course.author == author1) ? 'card-right' : 'card-left'"> 
+            <ion-card [ngClass]="(course.author == data.currentauthor) ? 'card-right' : 'card-left'"> 
                 <ion-card-header>
                 {{course.author}}
               
