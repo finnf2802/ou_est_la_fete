@@ -1,14 +1,21 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-@Component({
+import { AngularFireDatabase } from 'angularfire2/database';
+
+@Component({ 
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
-
+  constructor(
+    public navCtrl: NavController,
+    public db: AngularFireDatabase
+    ) {
+      const obsable = db.list("/items").valueChanges();
+      obsable.subscribe(console.log);
   }
+
 
 }
