@@ -1,17 +1,45 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>Welcome to the Chatroom!</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <ul>
+      <div *ngFor="let course of obsable | async">
+        <p>
+          {{course | json}}
+        </p> 
+      </div>
+    </ul>
+    
 </ion-content>
+
+<ion-footer>
+  <ion-grid>
+
+    <ion-row>
+        <ion-col>
+            <ion-item>
+              <ion-label>Choose author:</ion-label>
+                <ion-select [(ngModel)]="author">
+                  <ion-option value="a1">Author1</ion-option>
+                  <ion-option value="a2">Author2</ion-option>
+                </ion-select>
+            </ion-item>
+          </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-75>
+        <ion-input type="text" placeholder="Enter Chat Message" [(ngModel)]="msgContent"></ion-input>
+      </ion-col>
+  
+      <ion-col>
+        <button ion-button color="dark" (click)="send()">Send</button>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>  
+  
+</ion-footer>
