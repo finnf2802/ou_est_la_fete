@@ -26,23 +26,12 @@ export class HomePage {
   }
 
   showMarkerMap(lat: number, lng: number, author: string){
-    this.swapToMapPage(lat,lng, author);
-  }
-
-  swapToMapPage(lat: number, lng: number, author: string){
     this.navCtrl.push(ContactPage, {
       latitude: lat,
       longitude: lng,
       author: author
     })
-    //var t: Tabs = this.navCtrl.parent;
-    //t.select(1);
   }
-
-  setMarker(lat: number, lng: number){
-    //this.about.addMarker(lat, lng);
-  }
-
 
   //upload data to Google Firebase on click (btn) via "uploadFirebase()"
   send(){
