@@ -8,14 +8,12 @@ import { AngularFireDatabase } from 'angularfire2/database';
   templateUrl: 'home.html'
 })
 export class HomePage {
-
+  public obsable;
   constructor(
     public navCtrl: NavController,
     public db: AngularFireDatabase
     ) {
-      const obsable = db.list("/items").valueChanges();
-      obsable.subscribe(console.log);
+      this.obsable = db.list("/items").valueChanges();
+      this.obsable.subscribe(console.log);
   }
-
-
 }
