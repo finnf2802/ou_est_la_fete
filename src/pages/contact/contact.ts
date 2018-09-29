@@ -17,7 +17,7 @@ declare var google;
 })
 export class ContactPage {
 
-  @ViewChild("map") mapElement: ElementRef;
+  @ViewChild("map_event") mapElement: ElementRef;
   mapReady: boolean = false;
   map: any;
 
