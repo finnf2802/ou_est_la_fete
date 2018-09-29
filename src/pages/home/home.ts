@@ -21,19 +21,10 @@ export class HomePage {
       
   }
 
-  
-
- 
-  
-
   //upload data to Google Firebase on click (btn) via "uploadFirebase()"
   send(){
     if(this.author != null && this.msgContent != null)
       this.data.uploadFirebase(this.author,this.msgContent);
       
-  }
-
-  getLocaleDateTimeFormat(){
-
   }
 }
