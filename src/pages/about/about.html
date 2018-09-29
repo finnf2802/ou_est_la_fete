@@ -14,7 +14,7 @@
 </ion-header>
 
 <ion-content padding>
-  
+  <button ion-button (click)="getPosition()" full round icon-end color="secondary">send position<ion-icon name="pin"></ion-icon></button>
   <div #map id="map">
     <button ion-button (click)="onButtonClick($event)">Map</button>
   </div>
