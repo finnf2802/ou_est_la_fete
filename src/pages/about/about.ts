@@ -28,7 +28,9 @@ export class AboutPage {
   ionViewDidLoad() {
     this.loadMap();
   }
-  
+  getPosition(){
+    console.log(this.geolocation.getCurrentPosition());
+  }
   loadMap() {
     this.geolocation.getCurrentPosition().then((position) => {
       let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
