@@ -44,12 +44,12 @@
     </ion-row>
 
     <ion-row>
-      <ion-col col-75>
+      <ion-col>
         <ion-input type="text" placeholder="Enter Chat Message" [(ngModel)]="msgContent"></ion-input>
       </ion-col>
   
-      <ion-col>
-        <button ion-button color="dark" (click)="send()">Send</button>
+      <ion-col style="align-content: center">
+        <button ion-button color="dark" (click)="send()" round icon-end>Send<ion-icon name="paper-plane"></ion-icon></button>
       </ion-col>
     </ion-row>
 
