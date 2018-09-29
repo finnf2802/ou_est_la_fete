@@ -11,6 +11,8 @@ export class HomePage {
 
   public obsable;
   private author1;
+  public author;
+  public msgContent;
   
   constructor(
     public navCtrl: NavController,
@@ -42,5 +44,9 @@ export class HomePage {
   send(){
     if(this.author != null && this.msgContent != null)
       this.uploadFirebase();
+  }
+
+  getLocaleDateTimeFormat(){
+
   }
 }
