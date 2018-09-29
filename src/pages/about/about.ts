@@ -9,6 +9,7 @@ import {
   GoogleMapsAnimation,
   MyLocation
 } from '@ionic-native/google-maps';
+import { Data } from '../../services/data';
 declare var google;
 
 @Component({
@@ -22,15 +23,23 @@ export class AboutPage {
 
   constructor(
     public navCtrl: NavController,
-    public toastCtrl: ToastController,public geolocation: Geolocation 
-  ) {  } 
-  
+    public toastCtrl: ToastController, public geolocation: Geolocation, public data: Data
+  ) { }
+
   ionViewDidLoad() {
     this.loadMap();
   }
+  uploadFirebase(lat: number, lng: number) {
+    this.data.uploadFirebase(null, "Event:" + lat.toString() + " ,   " +lng.toString() )
+  }
+  getPosition() {
+    const position = this.geolocation.getCurrentPosition();
+    position.then(obj => {
+      console.log(position);
+      this.uploadFirebase(obj.coords.latitude,obj.coords.longitude);
+    })
+      .catch(error => { console.error(error) });
 
-  getPosition(){
-    console.log(this.geolocation.getCurrentPosition());
   }
 
   loadMap() {
