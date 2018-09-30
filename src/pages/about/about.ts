@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController, ToastController } from 'ionic-angular';
+import { NavController, ToastController, NavParams } from 'ionic-angular';
 import { Geolocation } from "@ionic-native/geolocation";
 import {
   GoogleMaps,
@@ -21,25 +21,52 @@ export class AboutPage {
   mapReady: boolean = false;
   map: any;
 
+  private lat;
+  private lng;
+  private author;
+
   constructor(
     public navCtrl: NavController,
-    public toastCtrl: ToastController, public geolocation: Geolocation, public data: Data
-  ) { }
+    public toastCtrl: ToastController, 
+    public geolocation: Geolocation, 
+    public data: Data,
+    public navParams: NavParams
+  ) { 
+    //this.author = navParams.get("author");
+    //this.lat = navParams.get("latitude");
+    //this.lng = navParams.get("longitude");
+  }
 
   ionViewDidLoad() {
     this.loadMap();
+    //this.addAllMarkers();
+    //this.addMarker(51.734159299999995,8.733598599999999);
+    //this.addMarker(51.734159299999997,8.733598599999997);
+    console.log();
   }
   uploadFirebase(lat: number, lng: number) {
-    this.data.uploadEvent(lat,lng  );
+    this.data.uploadEvent(lat, lng);
+  }
+  uploadEventList2(lat: number, lng: number){
+    this.data.uploadEventList2(lat, lng);
+    this.author = this.data.currentauthor;
   }
   getPosition() {
     const position = this.geolocation.getCurrentPosition();
     position.then(obj => {
       console.log(position);
       this.uploadFirebase(obj.coords.latitude,obj.coords.longitude);
+      this.uploadEventList2(obj.coords.latitude, obj.coords.longitude);
     })
       .catch(error => { console.error(error) });
+  }
 
+  addAllMarkers(){
+    this.data.eventsLi.subscribe((array: any) => {array.forEach(element => {
+      console.log(element);
+      this.addMarker(element.latitude, element.longitude);
+    });});
+    
   }
 
   loadMap() {
@@ -51,6 +78,7 @@ export class AboutPage {
         mapTypeId: google.maps.MapTypeId.ROADMAP
       }
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+      this.addAllMarkers();
     }, (err) => {
       console.log(err);
     });
@@ -58,12 +86,14 @@ export class AboutPage {
 
   addMarker(lat: number, lng: number) { // To Add Marker
     let latLng = {lat, lng} ;
+    console.log(latLng);
     let marker = new google.maps.Marker({
       map: this.map,
       animation: google.maps.Animation.DROP,
       position: latLng
     });
-    let content = "<h3>My New Location!</h3>";
+    console.log(marker);
+    let content = "<h3>Event von: </h3>" + "<h1>" + this.author + "</h1>";
     this.addInfoWindow(marker, content);
   }
 

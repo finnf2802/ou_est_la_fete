@@ -24,7 +24,7 @@ export class HomePage {
     ) {
       
   }
-
+  
   showMarkerMap(lat: number, lng: number, author: string){
     this.navCtrl.push(ContactPage, {
       latitude: lat,
@@ -32,7 +32,6 @@ export class HomePage {
       author: author
     })
   }
-
 
   //upload data to Google Firebase on click (btn) via "uploadFirebase()"
   send(){

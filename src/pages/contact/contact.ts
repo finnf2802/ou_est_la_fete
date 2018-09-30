@@ -27,7 +27,10 @@ private author;
 
   constructor(
     public navCtrl: NavController,
-    public toastCtrl: ToastController, public geolocation: Geolocation, public data: Data, public navParams: NavParams
+    public toastCtrl: ToastController, 
+    public geolocation: Geolocation, 
+    public data: Data, 
+    public navParams: NavParams
   ) {
     this.lat = navParams.get("latitude");
    this.lng = navParams.get("longitude");
