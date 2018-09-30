@@ -32,16 +32,10 @@ export class AboutPage {
     public data: Data,
     public navParams: NavParams
   ) { 
-    //this.author = navParams.get("author");
-    //this.lat = navParams.get("latitude");
-    //this.lng = navParams.get("longitude");
   }
 
   ionViewDidLoad() {
     this.loadMap();
-    //this.addAllMarkers();
-    //this.addMarker(51.734159299999995,8.733598599999999);
-    //this.addMarker(51.734159299999997,8.733598599999997);
     console.log();
   }
   uploadFirebase(lat: number, lng: number) {
