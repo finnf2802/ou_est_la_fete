@@ -64,7 +64,7 @@ export class AboutPage {
   addAllMarkers(){
     this.data.eventsLi.subscribe((array: any) => {array.forEach(element => {
       console.log(element);
-      this.addMarker(element.latitude, element.longitude);
+      this.addMarker(element.latitude, element.longitude, element.author);
     });});
     
   }
@@ -84,7 +84,7 @@ export class AboutPage {
     });
   }
 
-  addMarker(lat: number, lng: number) { // To Add Marker
+  addMarker(lat: number, lng: number, author: string) { // To Add Marker
     let latLng = {lat, lng} ;
     console.log(latLng);
     let marker = new google.maps.Marker({
@@ -93,7 +93,7 @@ export class AboutPage {
       position: latLng
     });
     console.log(marker);
-    let content = "<h3>Event von: </h3>" + "<h1>" + this.author + "</h1>";
+    let content = "<h3>Event von: </h3>" + "<h1>" + author + "</h1>";
     this.addInfoWindow(marker, content);
   }
 
